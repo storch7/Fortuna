@@ -3,6 +3,8 @@ from dotenv import load_dotenv
 import os
 
 BASE_DIR = Path(__file__).resolve().parent
+
+#load_dotenv(BASE_DIR / ".env.exemple")
 load_dotenv(BASE_DIR / ".env")
 
 TOKEN_TELEGRAM = os.getenv("TOKEN_TELEGRAM")
