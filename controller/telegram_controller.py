@@ -15,4 +15,5 @@ def echo(message):
 
 
 def run():
+    print("🚀 Bot iniciando polling...")
     telegram_api.start_polling()
