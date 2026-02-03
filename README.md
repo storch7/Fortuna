@@ -42,7 +42,7 @@ pip install -r requirements.txt
 ---
 ## Executar o projeto
 
-Execute o projeto:
+Execute, na pasta raiz do projeto, o comando:
 
 ```bash
 python dev.py
