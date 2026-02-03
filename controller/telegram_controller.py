@@ -1,13 +1,18 @@
+from telegram import Update
+from telegram.ext import CommandHandler, MessageHandler, filters, ContextTypes
 from model.api.telegram_api import bot
 
-@bot.message_handler(commands=["start"])
-def start(message):
-    bot.reply_to(message, "Howdy, how are you doing?")
 
-@bot.message_handler(func=lambda message: True)
-def echo(message):
-    bot.reply_to(message, message.text)
+async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    await update.message.reply_text("Howdy, how are you doing?")
+
+
+async def echo(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    await update.message.reply_text(update.message.text)
+
 
 def run():
     print("🚀 Bot iniciando polling...")
-    bot.infinity_polling()
+    bot.add_handler(CommandHandler("start", start))
+    bot.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, echo))
+    bot.run_polling()
